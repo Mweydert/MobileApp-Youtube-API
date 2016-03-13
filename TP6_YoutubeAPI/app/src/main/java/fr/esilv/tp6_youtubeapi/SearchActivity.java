@@ -85,10 +85,10 @@ public class SearchActivity extends Activity {
                 Picasso.with(getApplicationContext()).load(searchResult.getThumbnailURL()).into(thumbnail);
                 title.setText(searchResult.getTitle());
                 description.setText(searchResult.getDescription());
+
                 return convertView;
             }
         };
-
         videosFound.setAdapter(adapter);
     }
 
@@ -99,6 +99,9 @@ public class SearchActivity extends Activity {
             public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
                 Intent intent = new Intent(getApplicationContext(), PlayerActivity.class);
                 intent.putExtra("VIDEO_ID", searchResults.get(pos).getId());
+                intent.putExtra("VIDEO_TITLE", searchResults.get(pos).getTitle());
+                intent.putExtra("VIDEO_DESCRIPTION", searchResults.get(pos).getDescription());
+
                 startActivity(intent);
             }
 

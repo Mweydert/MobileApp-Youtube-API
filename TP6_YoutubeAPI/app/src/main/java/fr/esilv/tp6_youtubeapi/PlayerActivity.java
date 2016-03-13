@@ -1,6 +1,7 @@
 package fr.esilv.tp6_youtubeapi;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -14,16 +15,25 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     private YouTubePlayerView playerView;
+    private TextView playerTitle;
+    private TextView playerDescription;
 
     @Override
     protected void onCreate(Bundle bundle)
     {
         super.onCreate(bundle);
-
         setContentView(R.layout.player_layout);
 
         playerView = (YouTubePlayerView)findViewById(R.id.player_view);
         playerView.initialize(YoutubeConnection.KEY, this);
+
+        playerTitle = (TextView)findViewById(R.id.player_title);
+        playerDescription = (TextView)findViewById(R.id.player_description);
+
+        playerTitle.setText(getIntent().getStringExtra("VIDEO_TITLE"));
+        playerDescription.setText(getIntent().getStringExtra("VIDEO_DESCRIPTION"));
+
+
     }
 
     @Override

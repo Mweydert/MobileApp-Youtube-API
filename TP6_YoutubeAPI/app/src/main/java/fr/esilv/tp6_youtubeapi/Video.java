@@ -1,5 +1,8 @@
 package fr.esilv.tp6_youtubeapi;
 
+import com.google.api.client.util.DateTime;
+
+
 /**
  * Created by micha_000 on 26/02/2016.
  */
@@ -9,11 +12,22 @@ public class Video {
     private String description;
     private String thumbnailURL;
     private String id;
+    private DateTime date;
+    private String channelTitle;
 
+
+    public String getChannelTitle() {
+        return channelTitle;
+    }
+
+    public void setChannelTitle(String channelTitle) {
+        this.channelTitle = channelTitle;
+    }
 
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -40,5 +54,13 @@ public class Video {
 
     public void setThumbnailURL(String thumbnail) {
         this.thumbnailURL = thumbnail;
+    }
+
+    public DateTime getDate() {
+        return date;
+    }
+
+    public void setDate(DateTime date) {
+        this.date = date;
     }
 }

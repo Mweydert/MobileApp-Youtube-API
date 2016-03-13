@@ -25,7 +25,8 @@ public class YoutubeConnection {
 
     public static final String KEY = "AIzaSyAGJEu1C7DTouQhi4VUBHXLiLid-Y-k4x4";
 
-    public YoutubeConnection(Context context) {
+    public YoutubeConnection(Context context)
+    {
         youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new HttpRequestInitializer() {
             @Override
             public void initialize(HttpRequest hr) throws IOException {}
@@ -37,9 +38,10 @@ public class YoutubeConnection {
             query.setKey(KEY);
             query.setType("video");
             query.setFields("items(id/videoId,snippet/title,snippet/description,snippet/thumbnails/default/url)");
-            query.setMaxResults((long) 20);
+            query.setMaxResults((long) 25);
         }
-        catch(IOException e){
+        catch(IOException e)
+        {
             Log.d("YC", "Could not initialize: " + e);
         }
     }
@@ -50,6 +52,7 @@ public class YoutubeConnection {
             SearchListResponse response = query.execute();
             List<SearchResult> results = response.getItems();
 
+
             List<Video> items = new ArrayList<Video>();
             for(SearchResult result:results){
                 Video item = new Video();
@@ -57,6 +60,7 @@ public class YoutubeConnection {
                 item.setDescription(result.getSnippet().getDescription());
                 item.setThumbnailURL(result.getSnippet().getThumbnails().getDefault().getUrl());
                 item.setId(result.getId().getVideoId());
+
                 items.add(item);
             }
             return items;

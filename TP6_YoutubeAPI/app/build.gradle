@@ -27,5 +27,4 @@ dependencies {
     compile 'com.google.apis:google-api-services-youtube:v3-rev162-1.21.0'
     compile 'com.android.support:design:23.1.1'
     compile 'com.squareup.picasso:picasso:2.5.0'
-
 }
